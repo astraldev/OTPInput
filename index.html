@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Input</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="card-img-container">
+            <img src="account-verification-with-password-3d-padlock (1).jpg" alt="">
+        </div>
+        <div class="heading">
+            <h1>
+                Devant Associate
+            </h1>
+            <span>
+                An OTP (one time pin) has been sent to your email. Input the OTP below to continue
+            </span>
+        </div>
+        <div>
+            <div class="otp-container">
+                <input type="text" maxlength="6" class="otp-input" oninput="updateOtpDisplay(event)" onfocus="focusOtpDisplay(event)" onblur="blurOtpDisplay(event)"/>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="btn-box">
+                <button>
+                    Resend <span>02:45</span>
+                </button>
+                <button>
+                    Submit
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function focusOtpDisplay(ev) {
+            let elements = ev.target.parentNode.querySelectorAll("span");
+            let otp = ev.target.value;
+
+            if(otp.length < 6){
+                elements[otp.length].innerText = "-"
+                elements[otp.length].classList.add("fade-in-animation")
+            }
+        }
+        function blurOtpDisplay(ev) {
+            let elements = ev.target.parentNode.querySelectorAll("span");
+            let otp = ev.target.value;
+
+            if(otp.length < 6){
+                elements[otp.length].innerText = ""
+                elements[otp.length].classList.remove("fade-in-animation")
+            }
+        }
+        function updateOtpDisplay(ev) {
+            let elements = ev.target.parentNode.querySelectorAll("span");
+            let otp = ev.target.value;
+
+            for (let elem of elements) {
+                elem.innerText = ""
+                elem.style.border = "none"
+                elem.classList.remove("fade-in-animation")
+            }
+
+            for(let index = 0; index < otp.length; index++){
+                elements[index].innerText = otp[index]
+                elements[index].style.border = "2px solid rgb(129, 186, 22)"
+            }
+
+            if(otp.length < 6){
+                elements[otp.length].innerText = "-"
+                elements[otp.length].classList.add("fade-in-animation")
+            }
+        }
+    </script>
+</body>
+
+</html>
