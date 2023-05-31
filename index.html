@@ -17,10 +17,10 @@
         </div>
         <div class="heading">
             <h1>
-                Devant Associate
+                Test OTP Design
             </h1>
             <span>
-                An OTP (one time pin) has been sent to your email. Input the OTP below to continue
+                This is just a web development practice site for how to create an OTP input.
             </span>
         </div>
         <div>
@@ -70,13 +70,13 @@
 
             for (let elem of elements) {
                 elem.innerText = ""
-                elem.style.border = "none"
+                elem.style.border = "1px solid rgba(0, 0, 0, 0.3)"
                 elem.classList.remove("fade-in-animation")
             }
 
             for(let index = 0; index < otp.length; index++){
                 elements[index].innerText = otp[index]
-                elements[index].style.border = "2px solid rgb(129, 186, 22)"
+                elements[index].style.border = "1px solid rgb(129, 186, 22)"
             }
 
             if(otp.length < 6){

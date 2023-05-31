@@ -23,19 +23,19 @@ body {
     background: rgb(255, 255, 255);
     row-gap: 0.5rem;
     flex-direction: column;
-    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.312);
+    box-shadow: 0 0 1rem 0.125rem rgba(0, 0, 0, 0.068);
 }
 
 .heading > h1 {
     text-align: left;
-    font-size: 1.75rem;
-    text-transform: uppercase;
+    font-size: 1.5rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .heading > span {
     display: block;
     padding: 0.25rem;
     text-align: left;
+    color: rgb(98, 98, 98);
     font-size: small;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -56,15 +56,15 @@ body {
 }
 
 .btn-box > button:first-child{
-    background-color: rgb(219, 236, 143);
-    border: 2px solid rgb(213, 231, 133);
+    background-color: rgba(0, 171, 250, 0.679);
     justify-content: space-evenly;
+    border: none;
     padding: 0 1rem;
-    color: rgb(61, 69, 29);
+    color: rgb(255, 255, 255);
 }
 .btn-box > button:last-child{
-    background-color: rgb(123 188 0);
-    border: 2px solid rgb(129, 186, 22);
+    background-color: rgb(38, 216, 95);
+    border: none;
     color: white;
 }
 .btn-box > button {
@@ -87,11 +87,14 @@ body {
     inset: 0;
     color: transparent;
     outline: none;
+    user-select: none;
+}
+.otp-input::selection{
+    color: none;
 }
 
 .otp-container {
     /* background-color: rgba(255, 255, 255, 0.441); */
-    height: 2.5rem;
     padding: 0.25rem;
     position: relative;
     width: 100%;
@@ -101,13 +104,13 @@ body {
 }
 .otp-container > span{
     pointer-events: none;
-    height: 100%;
     border-radius: 4px;
     display: grid;
     place-items: center;
     font-size: 1.25rem;
     font-weight: bold;
-    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.145);
+    aspect-ratio: 1/1;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 .fade-in-animation {
     animation: fade-in 700ms 350ms infinite ease-in-out;
