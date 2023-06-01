@@ -13,7 +13,7 @@
 
     <div class="card">
         <div class="card-img-container">
-            <img src="account-verification-with-password-3d-padlock (1).jpg" alt="">
+            <img src="verification-img.jpg" alt="">
         </div>
         <div class="heading">
             <h1>
@@ -23,7 +23,7 @@
                 This is just a web development practice site for how to create an OTP input.
             </span>
         </div>
-        <div>
+        <div data-otp-ready="false" id="otp-section">
             <div class="otp-container">
                 <input type="text" maxlength="6" class="otp-input" oninput="updateOtpDisplay(event)" onfocus="focusOtpDisplay(event)" onblur="blurOtpDisplay(event)"/>
                 <span></span>
@@ -34,10 +34,13 @@
                 <span></span>
             </div>
             <div class="btn-box">
-                <button>
+                <button class="getotp" onclick="document.querySelector('div#otp-section').setAttribute('data-otp-ready', true)">
+                    Get OTP
+                </button>
+                <button class="resend">
                     Resend <span>02:45</span>
                 </button>
-                <button>
+                <button class="submit">
                     Submit
                 </button>
             </div>
@@ -76,7 +79,7 @@
 
             for(let index = 0; index < otp.length; index++){
                 elements[index].innerText = otp[index]
-                elements[index].style.border = "1px solid rgb(129, 186, 22)"
+                elements[index].style.border = "1px solid rgb(31, 214, 89)"
             }
 
             if(otp.length < 6){

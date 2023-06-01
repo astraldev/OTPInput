@@ -17,7 +17,8 @@ body {
 }
 .card {
     width: 320px;
-    padding: 1rem;
+    padding: 1.5rem;
+    padding-top: 0;
     border-radius: 7px;
     display: flex;
     background: rgb(255, 255, 255);
@@ -47,7 +48,13 @@ body {
     padding: 0.25rem;
     margin-top: 0.5rem;
 }
-.btn-box > button:first-child > span {
+.btn-box button.getotp {
+    width: 100%;
+    margin-right: auto;
+    background-color: rgb(0 124 255);
+    color: #fff;
+}
+.btn-box > button.resend > span {
     background-color: rgba(255, 255, 255, 0.422);
     font-size: smaller;
     padding: 0.125rem 0.25rem;
@@ -55,19 +62,27 @@ body {
     font-weight: bold;
 }
 
-.btn-box > button:first-child{
-    background-color: rgba(0, 171, 250, 0.679);
+.btn-box > button.resend{
+    background-color: rgb(0 124 255 / 0.80);
     justify-content: space-evenly;
-    border: none;
     padding: 0 1rem;
     color: rgb(255, 255, 255);
 }
-.btn-box > button:last-child{
-    background-color: rgb(38, 216, 95);
-    border: none;
+.btn-box > button.submit{
+    background-color: rgb(31, 214, 89);
     color: white;
 }
+
+div[data-otp-ready="false"] > .btn-box > button:not(.getotp){
+    display: none;
+}
+div[data-otp-ready="true"] > .btn-box > button.getotp{
+    animation: close-from-right 500ms 0ms 1 forwards linear;
+}
+
+
 .btn-box > button {
+    border: none;
     height: 34px; 
     font-weight: bold;
     display: flex;
@@ -77,8 +92,11 @@ body {
     column-gap: 0.125rem;
     background: none;
     outline: none;
-    width: 50%;
+    width: 0;
     border-radius: 5px;
+}
+.btn-box > button:not(.getotp){
+    animation: expand-width-to-50 500ms 200ms 1 forwards linear;
 }
 .otp-input {
     background: transparent;
@@ -91,6 +109,10 @@ body {
 }
 .otp-input::selection{
     color: none;
+}
+
+div[data-otp-ready="false"] > .otp-container > span{
+    border: 1px solid rgba(149, 149, 149, 0.328);
 }
 
 .otp-container {
@@ -114,6 +136,26 @@ body {
 }
 .fade-in-animation {
     animation: fade-in 700ms 350ms infinite ease-in-out;
+}
+
+@keyframes  expand-width-to-50 {
+    from{
+        color: transparent;
+    }
+    to {
+        color: #fff;
+        width: 50%;
+    }
+}
+
+@keyframes close-from-right {
+    from{
+        color: transparent;
+    }
+    to{
+        width: 0;
+        margin-right: -7px;
+    }
 }
 
 @keyframes fade-in {
